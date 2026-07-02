@@ -1,0 +1,378 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaUserGraduate, FaUniversity, FaFileAlt, FaPassport, FaPlaneDeparture, } from "react-icons/fa";
+
+import servicesData from "../data/servicesData";
+import ServiceCard from "../components/ServiceCard/ServiceCard";
+import featuresData from "../data/featuresData";
+import FeatureCard from "../components/FeatureCard/FeatureCard";
+import countriesData from "../data/countriesData";
+import CountryCard from "../components/CountryCard/CountryCard";
+import testimonialsData from "../data/testimonialsData";
+import TestimonialCard from "../components/TestimonialCard/TestimonialCard";
+import partnersData from "../data/partnersData";
+import coachingData from "../data/coachingData";
+import CoachingCard from "../components/CoachingCard/CoachingCard";
+import CourseModal from "../components/CourseModal/CourseModal";
+import CountryModal from "../components/CountryModal/CountryModal";
+import FaqSection from "../components/FaqSection/FaqSection.jsx";
+import ConsultationSection from "../components/ConsultationSection/ConsultationSection.jsx";
+import SEO from "../components/SEO.jsx";
+import Testimonials from "../components/TestimonialsSection/TestimonialsSection.jsx";
+
+import hero1 from "../assets/images/hero1.jpg";
+import hero2 from "../assets/images/hero2.jpg";
+import hero3 from "../assets/images/hero3.jpg";
+import hero4 from "../assets/images/hero4.jpg";
+
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade, } from "swiper/modules";
+
+import "swiper/css/effect-fade";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import AnimatedCounter from "../components/AnimatedCounter/AnimatedCounter";
+
+
+const Home = () => {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [openFAQ, setOpenFAQ] = useState(null);
+  const statsRef = useRef(null);
+  const [startCounting, setStartCounting] = useState(false);
+
+  const [showAllCountries, setShowAllCountries] = useState(false);
+
+  const displayedCountries = showAllCountries
+    ? countriesData
+    : countriesData.slice(0, 4);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStartCounting(true);
+          observer.disconnect(); // Run only once
+        }
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <>
+
+      <SEO
+        title="Keen Overseas | Study Abroad & Immigration Consultants"
+        description="Keen Overseas provides expert guidance for study abroad, student visas, university admissions, and immigration services. Book your free consultation today."
+        keywords="study abroad, student visa, immigration consultant, Canada study visa, Australia study visa, UK study visa, Keen Overseas"
+        url="https://keen-overseas.vercel.app"
+      />
+
+
+      {/* Hero Section */}
+      <section className="relative h-screen overflow-hidden">
+
+        <Swiper
+          modules={[Autoplay, Pagination, EffectFade]}
+          effect="fade"
+          speed={1200}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          loop={true}
+          className="h-full w-full"
+        >
+          {[hero1, hero2, hero3, hero4].map((image, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative h-screen">
+
+                {/* Background Image */}
+                <img
+                  src={image}
+                  alt={`Hero ${index + 1}`}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-[#0B2E4A]/30"></div>
+
+                {/* Hero Content */}
+                <motion.div
+                  className="absolute inset-0 z-20 flex items-center justify-center text-center px-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="max-w-4xl">
+
+                    <motion.h1
+                      className="text-[#E6ECF2] dark:text-slate-300 transition-colors duration-300 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      Your Gateway To Global Education
+                      <br />
+                      & Immigration Success
+                    </motion.h1>
+
+                    <motion.p
+                      className="mt-6 text-lg md:text-xl text-[#E6ECF2] dark:text-slate-300  transition-colors duration-300 max-w-2xl mx-auto leading-relaxed"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      Admissions • Visas • Scholarships • Immigration Guidance
+                    </motion.p>
+
+                    {/* Buttons */}
+                    <motion.div
+                      className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <Link
+                        to="/contact"
+                        className="bg-[#AB2330] dark:bg-[#C89B3C] hover:bg-[#921E29] dark:hover:bg-yellow-500 text-[#E6ECF2] dark:text-[#0B2E4A] font-semibold px-8 py-4 rounded-xl shadow-xl transition duration-300"
+                      >
+                        Book Free Consultation
+                      </Link>
+
+                      <Link
+                        to="/countries"
+                        className="border-2 border-white dark:border-[#C89B3C] text-[#E6ECF2] dark:text-[#0B2E4A] hover:bg-white dark:hover:bg-[#C89B3C] hover:text-[#0B2E4A] dark:text-yellow-500 font-semibold px-8 py-4 rounded-xl transition duration-300"
+                      >
+                        Explore Destinations
+                      </Link>
+                    </motion.div>
+
+                  </div>
+                </motion.div>
+
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+      </section>
+
+      {/* Stats Strip */}
+      <section className="py-10 bg-slate-100 dark:bg-[#0F172A] transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+
+            <div>
+              <h2 className="text-2xl md:text-5xl font-bold text-[#0B2E4A] dark:text-slate-200 transition-colors duration-300">
+                <AnimatedCounter end={512} suffix="+" />
+              </h2>
+
+              <p className="mt-2 text-black text-sm md:text-base dark:text-slate-300 transition-colors duration-300">
+                Universities
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-5xl font-bold text-[#0B2E4A] dark:text-slate-200 transition-colors duration-300">
+                <AnimatedCounter end={14} suffix="+" />
+              </h2>
+
+              <p className="mt-2 text-black text-sm md:text-base dark:text-slate-300 transition-colors duration-300">
+                Years Experience
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-5xl font-bold text-[#0B2E4A] dark:text-slate-200 transition-colors duration-300">
+                <AnimatedCounter end={92} suffix="%" />
+              </h2>
+
+              <p className="mt-2 text-black text-sm md:text-base dark:text-slate-300 transition-colors duration-300">
+                Visa Success Rate
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-5xl font-bold text-[#0B2E4A] dark:text-slate-200 transition-colors duration-300">
+                <AnimatedCounter end={1000} suffix="+" />
+              </h2>
+
+              <p className="mt-2 text-black text-sm md:text-base dark:text-slate-300 transition-colors duration-300">
+                Students Selected
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <ConsultationSection />
+
+      {/* Why Choose Us */}
+      < section className="py-10 bg-slate-100 dark:bg-[#0F172A] transition-colors duration-300" >
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+
+          {/* Heading */}
+          <div className="text-center">
+
+            <span className="text-yellow-500 font-semibold uppercase tracking-wider">
+              Why Choose Keen Overseas ?
+            </span>
+
+
+            <h2 className="mt-4 text-4xl font-bold text-black dark:text-white transition-colors duration-300">
+              Trusted Immigration Experts
+            </h2>
+
+            <p className="mt-4 text-black dark:text-white transition-colors duration-300 max-w-2xl mx-auto">
+              We simplify the immigration journey with expert guidance,
+              transparent processes, and dedicated support.
+            </p>
+          </div>
+
+          {/* Feature Cards */}
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuresData.map((feature) => (
+              <FeatureCard
+                key={feature.id}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </div>
+        </div>
+      </section >
+
+      {/* Countries Section */}
+      < section className="py-10 bg-slate-50 dark:bg-[#0B1220] transition-colors duration-300" >
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+
+          {/* Heading */}
+          <div className="text-center">
+
+            <span className="text-yellow-500 font-semibold uppercase tracking-wider">
+              Study Destinations
+            </span>
+
+            <h2 className="mt-4 text-4xl font-bold text-slate-900 dark:text-white transition-colors duration-300">
+              Explore Opportunities Worldwide
+            </h2>
+
+            <p className="mt-4 text-slate-600 max-w-2xl mx-auto dark:text-white transition-colors duration-300">
+              Discover top countries offering world-class education,
+              career growth, and immigration opportunities.
+            </p>
+          </div>
+
+          {/* Country Cards */}
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {displayedCountries.map((country) => (
+              <CountryCard
+                key={country.id}
+                name={country.name}
+                image={country.image}
+                description={country.description}
+                buttonText="Learn More"
+                onLearnMore={() => setSelectedCountry(country)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => setShowAllCountries(!showAllCountries)}
+            className=" bg-[#AB2330] dark:bg-[#C89B3C] hover:bg-[#941F2A] dark:hover:bg-yellow-500 inline-flex items-center gap-2 text-white dark:text-[#0B2E4A] font-semibold cursor-pointer px-8 py-4 rounded-xl transition duration-300">
+            {showAllCountries
+              ? "Show Less"
+              : "Explore More"}
+            <FaChevronDown
+              className={`transition-transform duration-300 ${showAllCountries ? "rotate-180" : ""
+                }`}
+            />
+          </button>
+        </div>
+      </section >
+
+      {/* Coaching Data */}
+      <section id="courses" className="scroll-mt-16 py-10 bg-slate-100 dark:bg-[#0F172A] transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+
+          <div className="text-center">
+
+            <span className="text-yellow-500 font-semibold uppercase tracking-wider">
+              Coaching Programs
+            </span>
+
+            <h2 className="mt-4 text-4xl font-bold text-[#0B2E4A] dark:text-white transition-colors duration-300">
+              Prepare for Success
+            </h2>
+
+            <p className="mt-4 text-slate-600 max-w-3xl mx-auto dark:text-white transition-colors duration-300">
+              Achieve your target scores with expert coaching designed to help you study abroad with confidence.
+            </p>
+
+          </div>
+
+          <div className="mt-14 grid md:grid-cols-2 gap-8">
+
+
+            {coachingData.map((program) => (
+              <CoachingCard
+                key={program.id}
+                icon={program.icon}
+                title={program.title}
+                description={program.about}
+                buttonText="Learn More"
+                onLearnMore={() => setSelectedCourse(program)}
+              />
+            ))}
+
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
+      
+
+      {/* FAQ Section */}
+      <FaqSection />
+
+      <CourseModal
+        course={selectedCourse}
+        onClose={() => setSelectedCourse(null)}
+      />
+
+      <CountryModal
+        country={selectedCountry}
+        onClose={() => setSelectedCountry(null)}
+      />
+
+    </>
+  );
+};
+
+export default Home;
