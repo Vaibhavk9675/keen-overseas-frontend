@@ -21,13 +21,17 @@ const consultationData = {
     "Your information is 100% secure. We never share your details.",
 
   countries: [
+    "USA",
     "Canada",
     "Australia",
-    "United Kingdom",
+    "United Kingdom (UK)",
     "Germany",
     "Singapore",
     "Russia",
     "Mauritius",
+    "New Zealand",
+    "Ireland",
+    "Other (Please Mention in Message box below)"
   ],
 
   intakes: [
