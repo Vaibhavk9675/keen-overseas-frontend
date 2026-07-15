@@ -186,10 +186,10 @@ const Contact = () => {
                   </h4>
 
                   <a
-                    href="tel:+9190846 82939"
+                    href="tel:+917696179834"
                     className="mt-2 text-[#AB2330] font-medium hover:underline"
                   >
-                    +91 90846 82939
+                    +91 76961 79834
                   </a>
 
                 </div>
