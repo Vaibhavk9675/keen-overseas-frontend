@@ -266,7 +266,7 @@ const Services = () => {
             </Link>
 
             <a
-              href="https://wa.me/916398610995"
+              href="https://wa.me/917696179834"
               target="_blank"
               rel="noreferrer"
               className="
