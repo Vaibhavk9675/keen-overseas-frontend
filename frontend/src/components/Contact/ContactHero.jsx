@@ -2,7 +2,7 @@ import contactData from "../../data/contactData";
 
 const ContactHero = () => {
     return (
-        <section className="bg-slate-50 dark:bg-[#0B1220] border-b border-slate-200 dark:border-slate-700">
+        <section className="bg-slate-50 dark:bg-[#0B1220] border-b border-slate-200 dark:border-slate-800">
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-14">
 

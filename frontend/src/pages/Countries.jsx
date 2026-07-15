@@ -10,20 +10,20 @@ const Countries = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-[#F8FAFC] border-b border-slate-200">
+      <section className="bg-[#F8FAFC] dark:bg-[#0B1220] border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-14">
 
           <div className="text-center">
 
-            <span className="text-[#AB2330] font-semibold uppercase tracking-wider">
+            <span className="text-[#AB2330] dark:text-yellow-500 font-semibold uppercase tracking-wider">
               Study Destinations
             </span>
 
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold text-[#0B2E4A]">
+            <h1 className="mt-4 text-4xl md:text-5xl font-bold text-[#0B2E4A] dark:text-white">
               Choose Your Dream Destination
             </h1>
 
-            <p className="mt-5 text-slate-600 max-w-3xl mx-auto text-lg">
+            <p className="mt-5 text-slate-600 dark:text-white max-w-3xl mx-auto text-lg">
               Explore globally recognized destinations offering quality
               education, career opportunities, and immigration pathways.
             </p>
@@ -34,7 +34,7 @@ const Countries = () => {
       </section>
 
       {/* Countries Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-slate-50 dark:bg-[#0F172A]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-28">
 
           {countriesData.map((country, index) => (
@@ -72,15 +72,15 @@ const Countries = () => {
               {/* Content */}
               <div>
 
-                <span className="text-[#AB2330] font-semibold uppercase tracking-wider">
+                <span className="text-[#AB2330] dark:text-yellow-500 font-semibold uppercase tracking-wider">
                   Study Destination
                 </span>
 
-                <h2 className="mt-4 text-4xl md:text-5xl font-bold text-[#0B2E4A]">
+                <h2 className="mt-4 text-4xl md:text-5xl font-bold text-[#0B2E4A] dark:text-white">
                   {country.name}
                 </h2>
 
-                <p className="mt-6 text-slate-600 text-lg leading-relaxed">
+                <p className="mt-6 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
                   {country.description}
                 </p>
 
@@ -92,8 +92,10 @@ const Countries = () => {
                       key={idx}
                       className="
                         bg-white
+                        dark:bg-[#C89B3C]
                         border
                         border-slate-200
+                        dark:border-none
                         px-4
                         py-2
                         rounded-full
@@ -115,8 +117,11 @@ const Countries = () => {
                     to="/contact"
                     className="
                       bg-[#AB2330]
+                      dark:bg-[#C89B3C]
                       hover:bg-[#941F2A]
+                      dark:hover:bg-yellow-500
                       text-white
+                      dark:text-[#0B2E4A]
                       px-6
                       py-3
                       rounded-xl
@@ -142,6 +147,11 @@ const Countries = () => {
                       hover:bg-[#0B2E4A]
                       hover:text-white
                       transition
+                      dark:text-yellow-500
+                      dark:hover:text-[#0B2E4A]
+                      dark:border-[#C89B3C]
+                      dark:text-[#0B2E4A]
+                      dark:hover:bg-[#C89B3C]
                     "
                   >
                     Learn More

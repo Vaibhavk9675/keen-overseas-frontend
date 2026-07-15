@@ -1,5 +1,6 @@
 import { HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const CountryModal = ({ country, onClose }) => {
   return (
@@ -25,6 +26,7 @@ const CountryModal = ({ country, onClose }) => {
             className="
               relative
               bg-white
+              dark:bg-[#0F172A]
               rounded-3xl
               w-full
               max-w-4xl
@@ -40,7 +42,7 @@ const CountryModal = ({ country, onClose }) => {
               <div className="flex justify-between items-start">
 
                 <div>
-                  <h2 className="text-3xl font-bold text-white">
+                  <h2 className="text-3xl font-bold text-white dark:text-white">
                     Study in {country.name}
                   </h2>
 
@@ -64,18 +66,18 @@ const CountryModal = ({ country, onClose }) => {
 
               {/* Why */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Why Study Here?
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                   {country.why}
                 </p>
               </section>
 
               {/* Courses */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Popular Courses
                 </h3>
 
@@ -86,10 +88,12 @@ const CountryModal = ({ country, onClose }) => {
                       key={index}
                       className="
                         bg-[#F6F8FB]
+                        dark:bg-[#C89B3C]
                         px-4
                         py-2
                         rounded-full
                         text-slate-700
+                        dark:text-[#0B2E4A]
                         font-medium
                       "
                     >
@@ -102,7 +106,7 @@ const CountryModal = ({ country, onClose }) => {
 
               {/* Intakes */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Major Intakes
                 </h3>
 
@@ -113,11 +117,13 @@ const CountryModal = ({ country, onClose }) => {
                       key={index}
                       className="
                         bg-[#F6F8FB]
+                        dark:bg-[#C89B3C]
                         rounded-2xl
                         p-4
                         text-center
                         font-medium
                         text-slate-700
+                        dark:text-[#0B2E4A]
                       "
                     >
                       {intake}
@@ -129,7 +135,7 @@ const CountryModal = ({ country, onClose }) => {
 
               {/* Work Opportunities */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Work Opportunities
                 </h3>
 
@@ -140,9 +146,11 @@ const CountryModal = ({ country, onClose }) => {
                       key={index}
                       className="
                         bg-[#F6F8FB]
+                        dark:bg-[#C89B3C]
                         rounded-2xl
                         p-4
                         text-slate-700
+                        dark:text-[#0B2E4A]
                       "
                     >
                       {item}
@@ -154,7 +162,7 @@ const CountryModal = ({ country, onClose }) => {
 
               {/* Universities */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Top Universities
                 </h3>
 
@@ -173,7 +181,7 @@ const CountryModal = ({ country, onClose }) => {
 
               {/* Cities */}
               <section>
-                <h3 className="text-2xl font-bold text-[#0B2E4A] mb-4">
+                <h3 className="text-2xl font-bold text-[#0B2E4A] dark:text-white mb-4">
                   Popular Cities
                 </h3>
 
@@ -182,7 +190,7 @@ const CountryModal = ({ country, onClose }) => {
                   {country.cities?.map((city, index) => (
                     <span
                       key={index}
-                      className=" bg-[#AB2330]/10 text-[#AB2330] px-4 py-2 rounded-full font-medium">
+                      className=" bg-[#AB2330]/10 dark:bg-[#C89B3C]/10 text-[#AB2330] dark:text-[#C89B3C] px-4 py-2 rounded-full font-medium">
                       {city}
                     </span>
                   ))}
@@ -193,16 +201,18 @@ const CountryModal = ({ country, onClose }) => {
               {/* CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
 
-                <button
-                  className=" flex-1 bg-[#AB2330] cursor-pointer hover:bg-[#941F2A] text-white font-semibold py-4 rounded-xl transition">
+                <Link
+                  to="/contact"
+                  className="flex-1 bg-[#AB2330] dark:bg-[#C89B3C] hover:bg-[#921E29] dark:hover:bg-yellow-500 text-[#E6ECF2] dark:text-[#0B2E4A] text-center font-semibold py-4 rounded-xl shadow-xl transition duration-300"
+                >
                   Book Free Consultation
-                </button>
+                </Link>
 
                 <a
                   href={`https://wa.me/916398610995?text=Hello Keen Overseas, I would like to study in ${country.name}.`}
                   target="_blank"
                   rel="noreferrer"
-                  className=" flex-1 border-2 border-[#0B2E4A] text-[#0B2E4A] hover:bg-[#0B2E4A] hover:text-white text-center font-semibold py-4 rounded-xl transition">
+                  className=" flex-1 border-2 border-[#0B2E4A] text-[#0B2E4A] hover:text-[#E6ECF2] dark:hover:text-[#0B2E4A] hover:bg-[#0B2E4A] dark:border-[#C89B3C] dark:text-[#0B2E4A] dark:hover:bg-[#C89B3C]  dark:text-yellow-500 text-center font-semibold py-4 rounded-xl transition">
                   WhatsApp Us
                 </a>
 
