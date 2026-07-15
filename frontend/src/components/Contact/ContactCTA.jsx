@@ -33,7 +33,7 @@ const ContactCTA = () => {
                     </a>
 
                     <a
-                        href="tel:+916395537639"
+                        href="tel:+917696179834"
                         className="
               inline-flex
               items-center
