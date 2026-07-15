@@ -199,7 +199,7 @@ const CountryModal = ({ country, onClose }) => {
                 </button>
 
                 <a
-                  href={`https://wa.me/916398610995?text=Hello Keen Overseas, I would like to study in ${country.name}.`}
+                  href={`https://wa.me/917696179834?text=Hello Keen Overseas, I would like to study in ${country.name}.`}
                   target="_blank"
                   rel="noreferrer"
                   className=" flex-1 border-2 border-[#0B2E4A] text-[#0B2E4A] hover:bg-[#0B2E4A] hover:text-white text-center font-semibold py-4 rounded-xl transition">
