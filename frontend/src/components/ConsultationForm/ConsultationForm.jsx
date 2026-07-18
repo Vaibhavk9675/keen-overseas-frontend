@@ -156,7 +156,7 @@ const ConsultationForm = ({
                         />
 
                         {error && (
-                            <div className="mb-4 rounded-xl border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+                            <div className="mb-4 rounded-xl supports-[backdrop-filter]:bg-background/250 dark:bg-bg-background/250 text-red-700 dark:text-red-900 px-4 py-3 text-sm">
                                 {error}
                             </div>
                         )}
