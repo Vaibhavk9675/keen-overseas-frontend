@@ -162,7 +162,7 @@ const ConsultationForm = ({
                         )}
 
                         {success && (
-                            <div className="mb-4 rounded-xl supports-[backdrop-filter]:bg-background/250 dark:bg-bg-background/250 bg-green-50 text-green-700 px-4 py-3 text-sm">
+                            <div className="mb-4 rounded-xl supports-[backdrop-filter]:bg-background/250 dark:bg-bg-background/250 text-green-700 px-4 py-3 text-sm">
                                 {success}
                             </div>
                         )}

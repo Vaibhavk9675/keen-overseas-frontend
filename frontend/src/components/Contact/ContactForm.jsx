@@ -232,13 +232,13 @@ const ContactForm = ({
                         )}
 
                         {error && (
-                            <div className="rounded-xl border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+                            <div className="rounded-xl supports-[backdrop-filter]:bg-background/250 dark:bg-bg-background/250 text-red-700 px-4 py-3 text-sm">
                                 {error}
                             </div>
                         )}
 
                         {success && (
-                            <div className="rounded-xl border border-green-200 bg-green-50 text-green-700 px-4 py-3 text-sm">
+                            <div className="rounded-xl supports-[backdrop-filter]:bg-background/250 dark:bg-bg-background/250 text-green-700 px-4 py-3 text-sm">
                                 {success}
                             </div>
                         )}
